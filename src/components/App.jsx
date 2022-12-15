@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ShowResults } from "./ShowResults/Showresults";
+import { ShowResults } from "./ShowResults/ShowResults";
 
 export class App extends Component {
 
@@ -16,6 +16,8 @@ export class App extends Component {
     this.setState(prevState => ({ [`${ev.target.name}`]: prevState[`${ev.target.name}`] + 1 }));
     console.log(this.state[`${ev.target.name}`]);
   }
+
+  
   
   render() {
     return (
