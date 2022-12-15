@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ShowResults } from "./ShowResults/ShowResults";
+import { ShowResults } from "./ShowResults/Showresults";
 
 export class App extends Component {
 
