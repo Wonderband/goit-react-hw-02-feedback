@@ -6,6 +6,7 @@ export class App extends Component {
   static defaultProps = {};
 
   static propTypes = {};
+  aa
 
   state = {
   good: 0,
