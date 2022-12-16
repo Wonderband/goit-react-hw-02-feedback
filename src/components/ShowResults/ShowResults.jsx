@@ -3,8 +3,7 @@ export const ShowResults = ({ state: {good, neutral, bad } } ) => {
     const countTotalFeedback = (a, b, c) => a + b + c; 
     const countPositiveFeedbackPercentage = (a, b, c) => (a + b + c ) && Math.round(100 * a / (a + b + c));
     return (
-        <div>
-            <h3>STATISTICS</h3>
+        <div>           
             <p>Good: {good}</p>
             <p>Neutral: {neutral}</p>
             <p>Bad: {bad}</p>
