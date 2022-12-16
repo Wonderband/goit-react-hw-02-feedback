@@ -1,6 +1,7 @@
+import styles from './Section.module.css'
 export const Section = ({ title, children }) => { 
     return (
-        <section className="Section"
+        <section 
         style={{
         // height: '100vh',
         display: 'flex',

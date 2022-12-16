@@ -19,7 +19,13 @@ export class App extends Component {
     // console.log([ev.target.name]);
   }
 
-  
+  isEmpty = () => { 
+    let sum = 0;
+    // console.log(this.state.entries());
+    Object.values(this.state).forEach(value => sum += value);
+    console.log(sum);
+    return sum;
+  }
   
   render() {
     return (
@@ -27,7 +33,7 @@ export class App extends Component {
         <Section title={'Please leave feedback'}>
           <FeedbackOptions onLeaveFeedback={this.incrementCounter}></FeedbackOptions>   
         </Section>  
-        <Section title={'statistics'.toUpperCase()}>
+        <Section title={'statistics'.toUpperCase()} >
           <ShowResults state={this.state} />
         </Section>
     </div>  
