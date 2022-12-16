@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { ShowResults } from "./ShowResults/Showresults";
+import { ShowResults } from "./ShowResults/ShowResults";
 
 export class App extends Component {
 
   static defaultProps = {};
 
   static propTypes = {};
-  aa
 
   state = {
   good: 0,
