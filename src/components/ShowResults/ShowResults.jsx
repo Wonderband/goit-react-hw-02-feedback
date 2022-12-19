@@ -7,7 +7,7 @@ export const ShowResults = ({ state: { good, neutral, bad } }) => {
     const noStatistics = (a, b, c) => a + b + c === 0;
     return (
         <>
-        <div className={noStatistics(good, neutral, bad) && styles.invisible}>           
+        <div className={noStatistics(good, neutral, bad)? styles.invisible : ''}>           
             <p>Good: {good}</p>
             <p>Neutral: {neutral}</p>
             <p>Bad: {bad}</p>
