@@ -60,6 +60,12 @@ export class App extends Component {
     // console.log(this.state);
     this.setState({filter: e.target.value.toLowerCase().trim()});
   }
+
+  onDelete = (idToDelete) => { 
+    this.setState(prevState => { 
+      return { contacts: [...prevState.contacts.filter(contact => contact.id !== idToDelete)] }
+    })
+  }
   
   render() {
     return (
@@ -75,7 +81,7 @@ export class App extends Component {
         </Section>
         <Section title={'Contacts'} >
           <Filter filter={this.state.filter} filterHandle={this.filterHandle} />
-          <ContactList filter={this.state.filter} contacts={this.state.contacts}/>          
+          <ContactList filter={this.state.filter} contacts={this.state.contacts} onDelete={this.onDelete} />          
         </Section>       
     </div>      
   );
