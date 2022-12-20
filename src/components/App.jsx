@@ -4,6 +4,8 @@ import { FeedbackOptions } from "./FeedbackOptions/FeedbackOptions"
 import { Section } from "./Section/Section";
 import { nanoid } from 'nanoid';
 import { Filter } from "./Filter/Filter";
+import { ContactForm } from "./ContactForm/ContactForm";
+import { ContactList } from "./ContactList/ContactList";
 
 export class App extends Component {
 
@@ -22,8 +24,8 @@ export class App extends Component {
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
   ],
   filter: '',
-  name: '',
-  number: '',
+  // name: '',
+  // number: '',
   
 }
   incrementCounter = (ev) => {    
@@ -41,6 +43,11 @@ export class App extends Component {
 
   handleSubmit = (e) => { 
     e.preventDefault();
+    if (this.state.contacts.find(contact =>
+      contact.name.toLowerCase() === e.target.name.value.toLowerCase().trim())) { 
+      alert(`${e.target.name.value} is already in contacts`);
+      return;
+    }
     const newContact = {
       name: e.target.name.value.trim(),
       number: e.target.number.value,
@@ -64,42 +71,12 @@ export class App extends Component {
           <ShowResults state={this.state} />
         </Section>
         <Section title={'Phonebook'} >
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Name:
-              <input
-                type="text"
-                name="name"
-                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                required
-                />
-            </label>
-            <input
-              type="tel"
-              name="number"
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
-            />
-            <button type='submit'>Add contact</button>
-          </form>
+          <ContactForm handleSubmit={this.handleSubmit}/>          
         </Section>
         <Section title={'Contacts'} >
-          <Filter filter={this.state.filter} filterHandle={this.filterHandle } />
-          <ul>
-            {this.state.contacts.filter(item => item.name.toLowerCase().includes(this.state.filter))
-              .map(item => (
-                <li key={item.id}>                  
-                {item.name}
-                { item.number}
-                </li>
-                )
-              )
-            }
-          </ul>
-        </Section>
-       
+          <Filter filter={this.state.filter} filterHandle={this.filterHandle} />
+          <ContactList filter={this.state.filter} contacts={this.state.contacts}/>          
+        </Section>       
     </div>      
   );
   }
