@@ -6,11 +6,7 @@ import { ContactForm } from "../ContactForm/ContactForm";
 import { ContactList } from "../ContactList/ContactList";
 
 export class Phonebook extends Component {
-
-  static defaultProps = {};
-
-  static propTypes = {};
-
+    
   state = {  
     contacts: [
         {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},

@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import { ShowResults } from "../ShowResults/ShowResults";
 import { FeedbackOptions } from "../FeedbackOptions/FeedbackOptions"
 import { Section } from "../Section/Section";
-export class Feedbacks extends Component { 
-
-  static defaultProps = {};
-  static propTypes = {};
-
+export class Feedbacks extends Component {
+  
   state = {
   good: 0,
   neutral: 0,
@@ -24,7 +21,7 @@ export class Feedbacks extends Component {
                 </FeedbackOptions>   
             </Section>  
             <Section title={'statistics'.toUpperCase()} >
-            <ShowResults state={this.state} />
+                <ShowResults state={this.state} />
             </Section>
         </div>
     )}

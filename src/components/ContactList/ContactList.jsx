@@ -1,4 +1,6 @@
-import { ListItem } from "./ListItem/ListItem"
+import PropTypes from "prop-types";
+import { ListItem } from "./ListItem/ListItem";
+
 export const ContactList = ({ filter, contacts, onDelete }) => { 
     return (
        <ul>
@@ -11,3 +13,15 @@ export const ContactList = ({ filter, contacts, onDelete }) => {
         </ul> 
     )
 }
+
+ContactList.propTypes = {    
+    filter: PropTypes.string,
+    contacts: PropTypes.arrayOf(PropTypes.shape(
+        {
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            number: PropTypes.string.isRequired,
+        }
+    )),
+}
+

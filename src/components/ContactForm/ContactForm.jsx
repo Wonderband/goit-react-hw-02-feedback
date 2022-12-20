@@ -1,4 +1,6 @@
-export const ContactForm = ({ handleSubmit}) => { 
+import PropTypes from "prop-types";
+
+export const ContactForm = ({ handleSubmit }) => { 
     return (
        <form onSubmit={handleSubmit}>
     <label>
@@ -22,3 +24,8 @@ export const ContactForm = ({ handleSubmit}) => {
 </form> 
     )
 }
+
+ContactForm.propTypes = {    
+    handleSubmit: PropTypes.func.isRequired,
+}
+
