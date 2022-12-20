@@ -1,5 +1,4 @@
-export const Filter = ({ filter, filterHandle }) => { 
-  // console.log(filter);
+export const Filter = ({ filter, filterHandle }) => {   
   return (
     <>
     <p>Find contacts by name</p>
@@ -8,7 +7,7 @@ export const Filter = ({ filter, filterHandle }) => {
         name="filter"
         title="Find the name!"
         value={filter}
-        onChange={ filterHandle}
+        onChange={filterHandle}
     />
     </>)
 }

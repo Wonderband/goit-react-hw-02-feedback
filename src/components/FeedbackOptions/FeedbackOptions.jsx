@@ -1,9 +1,10 @@
-export const FeedbackOptions = ({onLeaveFeedback}) => { 
-    return (
-        <div>            
-            <button type='button' name = 'good' onClick={onLeaveFeedback}>Good</button>
-            <button type='button' name = 'neutral' onClick={onLeaveFeedback}>Neutral</button>
-            <button type='button' name = 'bad' onClick={onLeaveFeedback}>Bad</button>
+import { nanoid } from "nanoid";
+
+export const FeedbackOptions = ({ options, onLeaveFeedback }) => {     
+    return (        
+        <div>  
+            {options.map(option => <button type='button' key={nanoid()} name={option}
+                onClick={onLeaveFeedback}>{option}</button>)}            
         </div>
     )
 }
