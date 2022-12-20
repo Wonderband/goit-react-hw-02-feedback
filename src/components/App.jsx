@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { ShowResults } from "./ShowResults/ShowResults";
 import { FeedbackOptions } from "./FeedbackOptions/FeedbackOptions"
 import { Section } from "./Section/Section";
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
+import { Filter } from "./Filter/Filter";
 
 export class App extends Component {
 
@@ -14,8 +15,15 @@ export class App extends Component {
   good: 0,
   neutral: 0,
   bad: 0,
-  contacts: [],
+  contacts: [
+    {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+    {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+    {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+    {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+  ],
+  filter: '',
   name: '',
+  number: '',
   
 }
   incrementCounter = (ev) => {    
@@ -33,8 +41,17 @@ export class App extends Component {
 
   handleSubmit = (e) => { 
     e.preventDefault();
-    const newName = { name: e.target.name.value.trim(), id: nanoid() };    
-    this.setState(prevState => { return { contacts: [...prevState.contacts, newName] } });
+    const newContact = {
+      name: e.target.name.value.trim(),
+      number: e.target.number.value,
+      id: nanoid()
+    };    
+    this.setState(prevState => { return { contacts: [...prevState.contacts, newContact] } });
+  }
+
+  filterHandle = (e) => { 
+    // console.log(this.state);
+    this.setState({filter: e.target.value.toLowerCase().trim()});
   }
   
   render() {
@@ -58,14 +75,24 @@ export class App extends Component {
                 required
                 />
             </label>
+            <input
+              type="tel"
+              name="number"
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+              required
+            />
             <button type='submit'>Add contact</button>
           </form>
         </Section>
         <Section title={'Contacts'} >
+          <Filter filter={this.state.filter} filterHandle={this.filterHandle } />
           <ul>
-            {this.state.contacts.map(item => (
+            {this.state.contacts.filter(item => item.name.toLowerCase().includes(this.state.filter))
+              .map(item => (
                 <li key={item.id}>                  
-                  {item.name}
+                {item.name}
+                { item.number}
                 </li>
                 )
               )
