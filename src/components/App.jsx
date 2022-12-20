@@ -71,7 +71,7 @@ export class App extends Component {
     return (
     <div>
         <Section title={'Please leave feedback'}>
-          <FeedbackOptions onLeaveFeedback={this.incrementCounter}></FeedbackOptions>   
+          <FeedbackOptions options={ } onLeaveFeedback={this.incrementCounter}></FeedbackOptions>   
         </Section>  
         <Section title={'statistics'.toUpperCase()} >
           <ShowResults state={this.state} />
