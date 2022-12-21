@@ -18,18 +18,19 @@ export class Phonebook extends Component {
     }  
 
   handleSubmit = (e) => { 
-    e.preventDefault();
+    e.preventDefault();    
     if (this.state.contacts.find(contact =>
       contact.name.toLowerCase() === e.target.name.value.toLowerCase().trim())) { 
       alert(`${e.target.name.value} is already in contacts`);
       return;
-    }
+    }    
     const newContact = {
       name: e.target.name.value.trim(),
       number: e.target.number.value,
       id: nanoid()
     };    
     this.setState(prevState => { return { contacts: [...prevState.contacts, newContact] } });
+    e.currentTarget.reset();
   }
 
   filterHandle = (e) => {     
